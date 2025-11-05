@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import StatCard from "@/components/StatCard";
 import WorkoutForm from "@/components/WorkoutForm";
 import WorkoutList from "@/components/WorkoutList";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Dumbbell, Flame, Clock, TrendingUp, LogOut } from "lucide-react";
 
 interface Workout {
@@ -169,10 +170,13 @@ const Dashboard = () => {
               Welcome back, {profile?.name || "User"}! 👋
             </p>
           </div>
-          <Button onClick={handleLogout} variant="outline" size="sm">
-            <LogOut className="w-4 h-4 mr-2" />
-            Logout
-          </Button>
+          <div className="flex gap-2">
+            <ThemeToggle />
+            <Button onClick={handleLogout} variant="outline" size="sm">
+              <LogOut className="w-4 h-4 mr-2" />
+              Logout
+            </Button>
+          </div>
         </div>
 
         {/* Stats Grid */}
@@ -181,25 +185,25 @@ const Dashboard = () => {
             title="Total Workouts"
             value={totalWorkouts}
             icon={Dumbbell}
-            gradient="gradient-accent"
+            variant="accent"
           />
           <StatCard
             title="Total Calories"
             value={totalCalories}
             icon={Flame}
-            gradient="gradient-energy"
+            variant="energy"
           />
           <StatCard
             title="Total Duration (min)"
             value={totalDuration}
             icon={Clock}
-            gradient="gradient-primary"
+            variant="primary"
           />
           <StatCard
             title="Avg Calories/Workout"
             value={avgCalories}
             icon={TrendingUp}
-            gradient="gradient-success"
+            variant="success"
           />
         </div>
 
